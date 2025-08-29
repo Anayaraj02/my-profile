@@ -50,7 +50,7 @@ function About() {
           transition={{ duration: 1 }}
           className="relative z-10 text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 animate-gradient-x"
         >
-          Hi, I'm Anaya
+          Hi, I'm Anaya Raj
         </motion.h1>  
 
         <TypingText

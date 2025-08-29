@@ -1,5 +1,5 @@
 "use client";
-
+import { FaBars, FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import SkillsSection from "@/component/SkillsSection";
 import ContactSection from "@/component/ContactSection";
@@ -10,7 +10,7 @@ import About from "@/component/About";
 
 export default function PortfolioPage() {
   const [darkMode, setDarkMode] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
   // Load saved theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -37,49 +37,77 @@ export default function PortfolioPage() {
     { name: "Contact", id: "contact" },
   ];
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    el?.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+    setIsOpen(false); // close menu on click (mobile UX)
   };
 
   return (
     <div className="font-sans text-gray-800 dark:text-gray-100 dark:bg-gray-900 transition-colors duration-500">
       {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-md z-50 flex justify-between items-center px-8 py-4">
-        {/* Left Side Navigation */}
-        <div className="flex gap-8">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="relative font-semibold text-gray-700 dark:text-gray-200 hover:text-purple-600 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-purple-600 after:transition-all hover:after:w-full"
+      <nav className="fixed top-0 w-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-md z-50 px-6 md:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <div className="text-xl font-bold text-purple-600">Anaya Raj</div>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex gap-8">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="relative font-semibold text-gray-700 dark:text-gray-200 hover:text-purple-600 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-purple-600 after:transition-all hover:after:w-full"
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Right Side (Resume + Dark Mode) */}
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="/Anaya-1.pdf"
+              download
+              className="px-4 py-2 text-sm font-semibold bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition"
             >
-              {item.name}
-            </button>
-          ))}
+              Download Resume
+            </a>
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            className="md:hidden text-2xl text-gray-700 dark:text-gray-200"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
 
-        {/* Right Side - Download + Dark Mode */}
-        <div className="flex items-center gap-4">
-          {/* Download Resume */}
-          <a
-            href="/Anaya-1.pdf" // Place your resume inside the "public" folder
-            download
-            className="px-4 py-2 text-sm font-semibold bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition"
-          >
-            Download Resume
-          </a>
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden flex flex-col gap-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg py-6 mt-2">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-purple-600"
+              >
+                {item.name}
+              </button>
+            ))}
 
-          {/* Dark Mode Toggle */}
-          {/* <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="text-xl p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-          >
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </button> */}
-        </div>
+            {/* Resume Button */}
+            <a
+              href="/Anaya-1.pdf"
+              download
+              className="px-4 py-2 text-center text-sm font-semibold bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition"
+            >
+              Download Resume
+            </a>
+          </div>
+        )}
       </nav>
-
       {/* Hero Section */}
       <About />
 

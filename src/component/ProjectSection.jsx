@@ -48,15 +48,15 @@ const projects = [
     code: "https://github.com/Anayaraj1/Chatting_Application",
     img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
   },
-{
-  id: 6,
-  title: "Razorpay Testing (Android)",
-  desc: "An Android application for simulating and testing Razorpay payment flows using sandbox (Test Mode). Integrated payment initiation, webhook handling, and response validation, enabling seamless end-to-end testing of gateway workflows.",
-  tech: ["Java", "Android Studio", "Razorpay SDK", "Sandbox Testing"],
-  demo: "https://github.com/Anayaraj1/Razerpay_Testing",
-  code: "https://github.com/Anayaraj1/Razerpay_Testing",
-  img: "https://images.unsplash.com/photo-1601597111158-5a16521b5b78?auto=format&fit=crop&w=800&q=80", 
-}
+  {
+    id: 6,
+    title: "Razorpay Testing (Android)",
+    desc: "An Android application for simulating and testing Razorpay payment flows using sandbox (Test Mode). Integrated payment initiation, webhook handling, and response validation, enabling seamless end-to-end testing of gateway workflows.",
+    tech: ["Java", "Android Studio", "Razorpay SDK", "Sandbox Testing"],
+    demo: "https://github.com/Anayaraj1/Razerpay_Testing",
+    code: "https://github.com/Anayaraj1/Razerpay_Testing",
+    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+  }
 
 ];
 
