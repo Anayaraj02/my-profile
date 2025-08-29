@@ -37,7 +37,7 @@ export default function PortfolioPage() {
     { name: "Contact", id: "contact" },
   ];
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id="") => {
     const section = document.getElementById(id);
     if (section) section.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false); // close menu on click (mobile UX)
