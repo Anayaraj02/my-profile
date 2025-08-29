@@ -21,7 +21,7 @@ function TypingText({ text="", className="" }) {
 
 function About() {
   const description = [
-    "Front-End Developer with 1.5 years of experience in building responsive and modular web applications using React.js, Svelte.js, and Next.js.",
+    "Front-End Developer with 1.7 years of experience in building responsive and modular web applications using React.js, Svelte.js, and Next.js.",
     "Skilled in implementing Micro Frontend architectures, optimizing UI performance, and integrating GraphQL APIs.",
     "Demonstrated ability to deliver scalable solutions in Agile environments, with hands-on experience in SaaS and healthcare domains.",
   ];
