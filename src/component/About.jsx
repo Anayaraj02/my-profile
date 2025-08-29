@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 // Typing effect
-function TypingText({ text, className }) {
+function TypingText({ text="", className="" }) {
   const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {
