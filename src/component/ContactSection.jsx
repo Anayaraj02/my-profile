@@ -8,8 +8,19 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
+import { useEffect, useState } from "react";
 
 export default function Contact() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect screen size
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640); // sm breakpoint
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section
       id="contact"
@@ -18,8 +29,8 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         {/* Title */}
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={isMobile ? false : { opacity: 0, y: 30 }}
+          whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-4xl font-bold text-center mb-12"
         >
@@ -29,8 +40,8 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-10">
           {/* Left Side - Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={isMobile ? false : { opacity: 0, x: -50 }}
+            whileInView={isMobile ? {} : { opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
@@ -75,8 +86,8 @@ export default function Contact() {
 
           {/* Right Side - Card */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={isMobile ? false : { opacity: 0, x: 50 }}
+            whileInView={isMobile ? {} : { opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/20"
           >
@@ -89,10 +100,10 @@ export default function Contact() {
               — feel free to reach out!
             </p>
             <a
-              href="mailto:anayaraj@example.com?subject=Hello%20Anaya&body=I%20saw%20your%20portfolio%20and..."
-              className="mt-6 text-pink-400 font-semibold hover:underline"
+              href="mailto:anayaraj735@gmail.com?subject=Hello%20Anaya&body=I%20saw%20your%20portfolio%20and..."
+              className="mt-6 text-pink-400 font-semibold hover:underline block"
             >
-              📧 anayaraj@example.com
+              📧 anayaraj735@gmail.com
             </a>
           </motion.div>
         </div>

@@ -45,9 +45,8 @@ function Timeline() {
               initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className={`mb-8 w-full flex flex-col md:flex-row items-center ${
-                idx % 2 === 0 ? "md:justify-start" : "md:justify-end"
-              } relative`}
+              className={`mb-8 w-full flex flex-col md:flex-row items-center ${idx % 2 === 0 ? "md:justify-start" : "md:justify-end"
+                } relative`}
             >
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full md:w-1/2">
                 <h3 className="font-semibold text-lg">{item.title}</h3>
@@ -61,7 +60,12 @@ function Timeline() {
                   {item.desc}
                 </p>
               </div>
-              <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-purple-600 rounded-full border-4 border-white dark:border-gray-900"></div>
+              <div
+                className="hidden md:block absolute top-6 left-1/2 transform -translate-x-1/2 
+             w-6 h-6 bg-purple-600 rounded-full border-4 border-white 
+             dark:border-gray-900"
+              ></div>
+
             </motion.div>
           ))}
         </div>
