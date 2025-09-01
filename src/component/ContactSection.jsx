@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import {
   FaGithub,
   FaLinkedin,
@@ -8,19 +7,8 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import { useEffect, useState } from "react";
 
 export default function Contact() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Detect screen size
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640); // sm breakpoint
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <section
       id="contact"
@@ -28,23 +16,13 @@ export default function Contact() {
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         {/* Title */}
-        <motion.h2
-          initial={isMobile ? false : { opacity: 0, y: 30 }}
-          whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-center mb-12"
-        >
+        <h2 className="text-4xl font-bold text-center mb-12">
           Let’s Connect
-        </motion.h2>
+        </h2>
 
         <div className="grid md:grid-cols-2 gap-10">
           {/* Left Side - Contact Info */}
-          <motion.div
-            initial={isMobile ? false : { opacity: 0, x: -50 }}
-            whileInView={isMobile ? {} : { opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <div className="flex items-center gap-4">
               <FaEnvelope className="text-pink-500 text-2xl" />
               <p className="text-lg">anayaraj735@gmail.com</p>
@@ -82,15 +60,10 @@ export default function Contact() {
                 <SiLeetcode />
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Side - Card */}
-          <motion.div
-            initial={isMobile ? false : { opacity: 0, x: 50 }}
-            whileInView={isMobile ? {} : { opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/20"
-          >
+          <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/20">
             <h3 className="text-2xl font-semibold mb-4">
               Open to Opportunities 🚀
             </h3>
@@ -105,7 +78,7 @@ export default function Contact() {
             >
               📧 anayaraj735@gmail.com
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

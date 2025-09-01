@@ -11,6 +11,7 @@ import About from "@/component/About";
 export default function PortfolioPage() {
   const [darkMode, setDarkMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
   // Load saved theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -37,10 +38,18 @@ export default function PortfolioPage() {
     { name: "Contact", id: "contact" },
   ];
 
-  const scrollToSection = (id="") => {
+  // Smooth scroll with navbar offset
+  const scrollToSection = (id = "") => {
     const section = document.getElementById(id);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
-    setIsOpen(false); // close menu on click (mobile UX)
+    if (section) {
+      const yOffset = -80; // height of navbar
+      const y =
+        section.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+    setIsOpen(false); // close mobile menu
   };
 
   return (
@@ -64,7 +73,7 @@ export default function PortfolioPage() {
             ))}
           </div>
 
-          {/* Right Side (Resume + Dark Mode) */}
+          {/* Right Side (Resume) */}
           <div className="hidden md:flex items-center gap-4">
             <a
               href="/Anaya-1.pdf"
@@ -75,7 +84,7 @@ export default function PortfolioPage() {
             </a>
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger */}
           <button
             className="md:hidden text-2xl text-gray-700 dark:text-gray-200"
             onClick={() => setIsOpen(!isOpen)}
@@ -108,20 +117,24 @@ export default function PortfolioPage() {
           </div>
         )}
       </nav>
-      {/* Hero Section */}
-      <About />
 
-      {/* About / Timeline Section */}
-      <Timeline />
+      {/* Main Content */}
+      <div className="pt-20"> {/* padding for fixed navbar */}
+        {/* Hero Section */}
+        <About />
 
-      {/* Projects Section */}
-      <ProjectsSection />
+        {/* Timeline Section */}
+        <Timeline />
 
-      {/* Skills Section */}
-      <SkillsSection />
+        {/* Projects Section */}
+        <ProjectsSection />
 
-      {/* Contact Section */}
-      <ContactSection />
+        {/* Skills Section */}
+        <SkillsSection />
+
+        {/* Contact Section */}
+        <ContactSection />
+      </div>
 
       {/* Floating Social Icons */}
       <FloatingSocials />
